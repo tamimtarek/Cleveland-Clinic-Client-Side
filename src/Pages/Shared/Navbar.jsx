@@ -12,7 +12,7 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/services">Services</NavLink>
+        <NavLink to="/service">Services</NavLink>
       </li>
       
       {user ? 
@@ -24,10 +24,10 @@ const Navbar = () => {
                 <NavLink to="/addservice">Add Service</NavLink>
               </li>
               <li>
-                <NavLink to="/login">Manage Service</NavLink>
+                <NavLink to="/manageservice">Manage Service</NavLink>
               </li>
               <li>
-                <NavLink to="/login">Booked-Services</NavLink>
+                <NavLink to="">Booked-Services</NavLink>
               </li>
               <li>
                 <NavLink to="/login">Service-To-Do</NavLink>

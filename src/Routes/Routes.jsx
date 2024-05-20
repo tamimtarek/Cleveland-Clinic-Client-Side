@@ -7,6 +7,10 @@ import Register from "../Pages/Register/Register";
 import PrivetRoute from "./PrivetRoute"
 import AddService from "../Pages/AddService/AddService";
 import CardDetails from "../Pages/CardDetails/CardDetails";
+import Service from "../Pages/Home/Service/Service";
+import ManageService from "../Pages/Home/ManageService/ManageService";
+import UpdateService from "../Pages/UpdateService/UpdateService";
+import BookedService from "../Pages/BookedService/BookedService";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -32,7 +36,24 @@ const router = createBrowserRouter([
         {
           path: "/details/:id",
           element: <PrivetRoute><CardDetails></CardDetails></PrivetRoute>,
-          loader: () => fetch("edu.json")
+          loader: () => fetch("http://localhost:5000/services")
+        },
+        {
+          path: "/service",
+          element: <PrivetRoute><Service></Service></PrivetRoute>
+        },
+        {
+          path: "/manageservice",
+          element: <PrivetRoute><ManageService></ManageService></PrivetRoute>
+        },
+        {
+          path: "/updateservice/:id",
+          element: <PrivetRoute><UpdateService></UpdateService></PrivetRoute>,
+          loader: () => fetch("http://localhost:5000/services")
+        },
+        {
+          path: "/booknow/:id",
+          element: <PrivetRoute><BookedService></BookedService></PrivetRoute>
         }
       ]
     },

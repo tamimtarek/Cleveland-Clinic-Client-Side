@@ -1,12 +1,18 @@
 import { useContext } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useLoaderData, useParams } from "react-router-dom";
 
-const AddService = () => {
-  const { user } = useContext(AuthContext);
+
+const UpdateService = () => {
+    const { user } = useContext(AuthContext);
+    const allData = useLoaderData();
+  const { id } = useParams();
+  const serviceDetails = allData.find((data) => data._id === id);
+  console.log(serviceDetails);
 
   const handleAddItem = (e) => {
+
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const serviceName = form.get("name");
@@ -30,7 +36,7 @@ const AddService = () => {
     e.target.reset();
     console.log(allInput);
     fetch("http://localhost:5000/services", {
-      method: "POST",
+      method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(allInput),
     })
@@ -55,7 +61,7 @@ const AddService = () => {
                   type="text"
                   name="name"
                   className=" rounded flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Service Name"
+                  defaultValue={serviceDetails.serviceName}
                 />
               </div>
             </div>
@@ -127,4 +133,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default UpdateService;
