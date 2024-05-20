@@ -8,7 +8,7 @@ import swal from "sweetalert";
 import { toast } from "react-toastify";
 const Register = () => {
 
-    const { createUser, setReload, updateUserProfile } = useContext(AuthContext);
+    const { createUser, setReload, updateUserProfile, setUser, user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -39,6 +39,7 @@ const Register = () => {
         createUser(email, password)
             .then(() => {
                 updateUserProfile(name, photo)
+                setUser({...user, photoURL: photo, displayName: name})
                     .then(
                         setReload(true),
                         swal.fire({

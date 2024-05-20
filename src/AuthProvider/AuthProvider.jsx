@@ -56,8 +56,10 @@ const AuthProvider = ({children}) => {
         logOut,
         createUser,
         googleUser,
+        setUser,
         user,
-        loading
+        loading,
+        
     }
     return (
         <AuthContext.Provider value={allParams}>
