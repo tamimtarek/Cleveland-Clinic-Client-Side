@@ -11,7 +11,7 @@ const UpdateService = () => {
   const serviceDetails = allData.find((data) => data._id === id);
   console.log(serviceDetails);
 
-  const handleAddItem = (e) => {
+  const handleUpdate = (e) => {
 
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -20,22 +20,18 @@ const UpdateService = () => {
     const price = form.get("price");
     const area = form.get("area");
     const description = form.get("description");
-    const providerImage = user.photoURL;
-    const providerName = user.displayName;
-    const email = user.email;
+    
     const allInput = {
       serviceName,
       serviceImage,
       area,
       price,
       description,
-      providerName,
-      email,
-      providerImage,
+
     };
     e.target.reset();
     console.log(allInput);
-    fetch("http://localhost:5000/services", {
+    fetch("http://localhost:5000/update", {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(allInput),
@@ -51,10 +47,10 @@ const UpdateService = () => {
     <div className="flex justify-center bg-base-200 p-10">
       <div className="flex flex-col w-full max-w-2xl px-4 py-8 bg-white rounded-lg shadow sm:px-6 md:px-8 lg:px-10">
         <div className="self-center mb-6 text-xl font-light sm:text-2xl ">
-          Add Your Service
+          Update Your Service
         </div>
         <div className="mt-8">
-          <form onSubmit={handleAddItem}>
+          <form onSubmit={handleUpdate}>
             <div className="flex flex-col mb-2">
               <div className="flex">
                 <input
@@ -81,6 +77,7 @@ const UpdateService = () => {
                   <input
                     type="text"
                     name="price"
+                    defaultValue={serviceDetails.price}
                     className=" rounded flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Price"
                   />
@@ -91,6 +88,7 @@ const UpdateService = () => {
                   <input
                     type="text"
                     name="area"
+                    defaultValue={serviceDetails.area}
                     className=" rounded flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Service Area"
                   />
@@ -113,7 +111,7 @@ const UpdateService = () => {
                 type="submit"
                 className="py-2 px-4 btn bg-purple-600 hover:bg-purple-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md "
               >
-                Add Service
+                Update Service
               </button>
             </div>
           </form>

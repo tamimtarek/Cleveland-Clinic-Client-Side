@@ -1,12 +1,15 @@
+// import React from 'react';
+
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-import BookedData from "../BookedData/BookedData";
 
+import BookedData from "../BookedData/BookedData";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+// import { Link } from "react-router-dom";
 
 const BookedService = () => {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   const { user } = useContext(AuthContext);
   useEffect(() => {
@@ -16,8 +19,8 @@ const BookedService = () => {
       )
       .then((res) => setData(res.data));
   }, [user]);
-    return (
-        <div>
+  return (
+    <div>
       <h1>Booked service</h1>
       <div className="overflow-x-auto">
         <table className="table">
@@ -50,7 +53,8 @@ const BookedService = () => {
       {/* foot */}
       {/* </div> */}
     </div>
-    );
+  );
 };
 
 export default BookedService;
+

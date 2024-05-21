@@ -13,7 +13,7 @@ const ManageService = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/manageservice/${user?.email == user.email}`
+      `http://localhost:5000/manageservice/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setManageService(data));

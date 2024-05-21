@@ -13,42 +13,49 @@ const ManageCard = ({ service, setClear, clear }) => {
     serviceImage,
     serviceName,
     description,
-    customer_photo,
+    providerImage,
     price,
-    customer_name,
-    customer_email,
+    providerName,
+    email,
   } = service;
   console.log(_id);
-
-  const handleDelete = () => {
-    Swal.fire({
+// 
+const handleDelete = _id => {
+  console.log(_id);
+  Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+      confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(
-          `https://localhost:5000/deleteService/${_id}`
-        );
-        Navigate("/service").then((res) => {
-          if (res.data.deletedCount > 0) {
-            // uiUpadte();
-            Swal.fire({
+          Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
-              icon: "success",
-            });
-
-            setClear(!clear);
-          }
-        });
+              icon: "success"
+          });
+          fetch(`https://localhost:5000/deleteService/${_id}`, {
+              method: "DELETE",
+          })
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data)
+                  if (data.deletedCount > 0) {
+                      Swal.fire(
+                          'Deleted!',
+                          'Your file has been deleted',
+                          'success'
+                      )
+                      // const remainig = items.filter(it => it._id !== _id);
+                      // setItems(remainig);
+                  }
+              })
       }
-    });
-  };
+  });
+}
 
   return (
     <div>
@@ -70,18 +77,18 @@ const ManageCard = ({ service, setClear, clear }) => {
             </p>
             <p className="text-gray-700 leading-tight h-auto text-sm mb-4">
               <span className="font-bold te underline">User-Email : </span>
-              {customer_email}
+              {email}
             </p>
             <div className="flex justify-between items-center">
               <div className="flex items-center">
                 <img
-                  src={customer_photo}
+                  src={providerImage}
                   alt="Avatar"
                   className="w-8 h-8 rounded-full mr-2 object-cover"
                 />
                 <span className="mr-4 text-gray-800 font-semibold">
                   <span className="font-bold text-black">Name: </span>{" "}
-                  {customer_name}
+                  {providerName}
                 </span>
               </div>
               <span className="text-gray-600">
