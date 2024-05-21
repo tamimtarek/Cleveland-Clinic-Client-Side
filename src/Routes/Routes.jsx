@@ -1,67 +1,108 @@
 import { createBrowserRouter } from "react-router-dom";
-import Root from "../Layout/Root";
-import Error from "../Pages/Error/Error"
-import Home from "../Pages/Home/Home";
-import Login from "../Pages/Login/Login";
-import Register from "../Pages/Register/Register";
-import PrivetRoute from "./PrivetRoute"
-import AddService from "../Pages/AddService/AddService";
-import CardDetails from "../Pages/CardDetails/CardDetails";
-import Service from "../Pages/Home/Service/Service";
-import ManageService from "../Pages/Home/ManageService/ManageService";
-import UpdateService from "../Pages/UpdateService/UpdateService";
-import BookedService from "../Pages/BookedService/BookedService";
-import ServiceToDo from "../Pages/Home/ServiceToDo/ServiceToDo";
-const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Root></Root>,
-      errorElement: <Error></Error>,
-      children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-          path: "/login",
-          element: <Login></Login>
-        },
-        {
-          path: "/register",
-          element: <Register></Register>
-        },
-        {
-          path: "/addservice",
-          element: <PrivetRoute><AddService></AddService></PrivetRoute>
-        },
-        {
-          path: "/details/:id",
-          element: <PrivetRoute><CardDetails></CardDetails></PrivetRoute>,
-          loader: () => fetch("http://localhost:5000/services")
-        },
-        {
-          path: "/service",
-          element: <PrivetRoute><Service></Service></PrivetRoute>
-        },
-        {
-          path: "/manageservice",
-          element: <PrivetRoute><ManageService></ManageService></PrivetRoute>
-        },
-        {
-          path: "/updateservice/:id",
-          element: <PrivetRoute><UpdateService></UpdateService></PrivetRoute>,
-          loader: () => fetch("http://localhost:5000/services")
-        },
-        {
-          path: "/booknow/:id",
-          element: <PrivetRoute><BookedService></BookedService></PrivetRoute>
-        },
-        {
-          path: "/servicetodo",
-          element: <ServiceToDo></ServiceToDo> 
-        }
-      ]
-    },
-  ]);
+import Main from "../Layout/Main";
+import Home from "../Pages/Home";
+import Login from "../Pages/Authencation/Login";
+import Register from "../Pages/Authencation/Register";
+import ViewDetails from "../Components/ViewDetails";
+import AddService from "../Dashboard/AddService";
+import ManageService from "../Dashboard/ManageService";
+import BookedService from "../Dashboard/BookedService";
+import Servicetodo from "../Dashboard/Servicetodo";
+import PrivateRoute from "./privateRoute";
+import Service from "../Components/Service";
+import Error from "../Components/Error";
+import Update from "../Components/Update";
+import BookNow from "../Components/BookNow";
+import Contact from "../Components/Contact";
+// import Extraroute from "../Components/Extraroute";
 
-  export default router;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        index: true,
+        element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      // {
+      //   path: "/extra",
+      //   element: <Extraroute></Extraroute>,
+      // },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/booknow/:id",
+        element: <BookNow></BookNow>,
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-11-server-one-plum.vercel.app/services/${params.id}`
+          ),
+      },
+      {
+        path: "/service",
+        element: <Service></Service>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/addservice",
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/manageservice",
+        element: (
+          <PrivateRoute>
+            <ManageService></ManageService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/bookedservice",
+        element: (
+          <PrivateRoute>
+            <BookedService></BookedService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/servicetodo",
+        element: (
+          <PrivateRoute>
+            <Servicetodo></Servicetodo>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-11-server-one-plum.vercel.app/services/${params.id}`
+          ),
+      },
+    ],
+  },
+]);
+export default router;
