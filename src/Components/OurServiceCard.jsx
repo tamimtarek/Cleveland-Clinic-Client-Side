@@ -11,7 +11,7 @@ const OurServiceCard = ({ service }) => {
     service_image,
     customer_name,
     customer_photo,
-    service_provider,
+   
     // image,
   } = service || {};
   // console.log(service);
@@ -36,13 +36,13 @@ const OurServiceCard = ({ service }) => {
             <div className="flex flex-col mb-auto sm:flex-row justify-between items-center">
               <div className="flex items-center">
                 <img
-                  src={service_provider?.image}
+                  src={customer_photo}
                   alt="Avatar"
                   className="w-8 h-8 rounded-full mr-2 object-cover"
                 />
                 <span className="mr-4 text-gray-800 font-semibold">
                   <span className="font-bold text-black">Name: </span>{" "}
-                  {service_provider?.name}
+                  {customer_name}
                 </span>
               </div>
               <span className="text-gray-600">

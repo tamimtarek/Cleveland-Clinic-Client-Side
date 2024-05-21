@@ -33,7 +33,7 @@ const ManageCard = ({ service, setClear, clear }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios.delete(
-          `https://assignment-11-server-one-plum.vercel.app/deleteService/${_id}`
+          `http://localhost:5000/deleteService/${_id}`
         );
         Navigate("/service").then((res) => {
           if (res.data.deletedCount > 0) {

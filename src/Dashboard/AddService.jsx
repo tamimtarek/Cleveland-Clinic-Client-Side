@@ -43,7 +43,7 @@ const AddService = () => {
     };
 
     console.log({ allInput });
-    fetch("https://assignment-11-server-one-plum.vercel.app/services", {
+    fetch("https://cleveland-server-side.vercel.app/services", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(allInput),
@@ -81,7 +81,7 @@ const AddService = () => {
               <div className="flex ">
                 <input
                   type="text"
-                  name="photo"
+                  name="photoUrl"
                   required
                   className=" rounded flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Service image"
@@ -104,7 +104,7 @@ const AddService = () => {
                 <div className="flex ">
                   <input
                     type="text"
-                    name="area"
+                    name="service_area"
                     required
                     className=" rounded flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Service Area"

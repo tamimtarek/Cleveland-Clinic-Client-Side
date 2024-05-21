@@ -19,22 +19,22 @@ const Servicetodo = () => {
   };
 
   useEffect(() => {
-    fetch("https://assignment-11-server-one-plum.vercel.app/bookedService")
+    fetch("https://cleveland-server-side.vercel.app/bookedService")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
       });
   }, []);
+  console.log(data)
 
   // Example usage of filterServices
   // This could be triggered by a button click or any other event
   const handleFilterClick = () => {
     filterServices(true); // Show only completed services
   };
-
   const updateStatus = (id, status) => {
     console.log(id, status);
-    fetch("https://assignment-11-server-one-plum.vercel.app/bookstatusupdate", {
+    fetch("https://cleveland-server-side.vercel.app/bookstatusupdate", {
       method: "PUT",
       body: JSON.stringify({ id, status }),
       headers: { "content-type": "application/json" },
@@ -65,10 +65,10 @@ const Servicetodo = () => {
       {data.map(
         ({
           _id,
-          serviceName,
-          serviceImage,
-          providerEmail,
-          providerName,
+          service_name,
+          service_image,
+          customer_email,
+          customer_name,
           currentUserEmail,
           currentUserName,
           price,
@@ -99,14 +99,14 @@ const Servicetodo = () => {
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img
-                            src={serviceImage}
+                            src={service_image}
                             alt="Avatar Tailwind CSS Component"
                           />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{serviceName}</div>
-                        <div className="text-sm opacity-50">{providerName}</div>
+                        <div className="font-bold">{service_name}</div>
+                        <div className="text-sm opacity-50">{customer_name}</div>
                       </div>
                     </div>
                   </td>

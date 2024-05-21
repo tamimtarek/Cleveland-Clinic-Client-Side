@@ -1,7 +1,7 @@
 // import React from 'react';
 import axios from "axios";
 import img1 from "../assets/image/pexels-pavel-danilyuk-view.jpg";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 // import { getAuth } from "firebase/auth";
 import toast from "react-hot-toast";
 import { useContext } from "react";
@@ -10,29 +10,28 @@ import { AuthContext } from "../Provider/AuthProvider";
 const ViewDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
+
   // const navigate = useNavigate();
   // console.log();
   const {
     _id,
+    service_description,
     service_price,
     service_name,
     service_image,
-    service_description,
-    service_provider,
-    image,
-
+    customer_name,
+    customer_photo,
     service_location,
   } = service;
 
   const groupData = {
     _id,
+    service_description,
     service_price,
     service_name,
     service_image,
-    service_description,
-    email: user?.email,
-    service_provider,
-    image,
+    customer_name,
+    customer_photo,
     service_location,
 
     // provider_email,
@@ -49,7 +48,7 @@ const ViewDetails = () => {
   const booked = () => {
     axios
       .post(
-        `https://assignment-11-server-one-plum.vercel.app/booked`,
+        `https://cleveland-server-side.vercel.app/booked`,
         groupData
       )
       .then((res) => {
@@ -95,7 +94,7 @@ const ViewDetails = () => {
                     <div className="text-blue-600 font-bold">
                       {" "}
                       <span className="font-bold underline">Price: </span>
-                      {service_provider?.price}
+                      {service_price}
                     </div>
                     <span className="text-gray-900 font-bold pr-3">
                       196 km{" "}

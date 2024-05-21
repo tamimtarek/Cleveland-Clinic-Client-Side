@@ -14,10 +14,10 @@ const BookedService = () => {
   useEffect(() => {
     axios
       .get(
-        `https://assignment-11-server-one-plum.vercel.app/bookedService?email=${user?.email}`
+        `https://cleveland-server-side.vercel.app/bookedService?email=${user?.email}`
       )
       .then((res) => setData(res.data));
-  }, []);
+  }, [user]);
   return (
     <div>
       <h1>Booked service</h1>

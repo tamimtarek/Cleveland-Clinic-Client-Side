@@ -22,7 +22,7 @@ const Navbar = () => {
          <li>
             <NavLink to="/contact">Contact</NavLink>
          </li>
-           {user && (
+           {user ? (
              <li>
                <details className="dropdown">
                 <summary className="m-1 ">Dashboard</summary>
@@ -51,7 +51,9 @@ const Navbar = () => {
                  </li>
               </ul>
              </details>
-             </li>)
+             </li>): <li>
+        <NavLink to="/login">Log-in</NavLink>
+      </li>
         
       }
     </>

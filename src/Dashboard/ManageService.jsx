@@ -13,11 +13,11 @@ const ManageService = () => {
 
   useEffect(() => {
     fetch(
-      `https://assignment-11-server-one-plum.vercel.app/manageService?email=${user?.email}`
+      `https://cleveland-server-side.vercel.app/manageService?email=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setManageService(data));
-  }, [clear]);
+  }, [user]);
 
   return (
     <div>

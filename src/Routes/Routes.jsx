@@ -37,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(
+            `https://cleveland-server-side.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/register",
@@ -47,7 +51,7 @@ const router = createBrowserRouter([
         element: <BookNow></BookNow>,
         loader: ({ params }) =>
           fetch(
-            `https://assignment-11-server-one-plum.vercel.app/services/${params.id}`
+            `https://cleveland-server-side.vercel.app/services/${params.id}`
           ),
       },
       {
@@ -97,10 +101,7 @@ const router = createBrowserRouter([
             <ViewDetails></ViewDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-one-plum.vercel.app/services/${params.id}`
-          ),
+        loader: ({ params }) =>fetch(`https://cleveland-server-side.vercel.app/services/${params.id}`),
       },
     ],
   },
