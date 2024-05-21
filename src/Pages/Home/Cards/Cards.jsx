@@ -26,8 +26,7 @@ const Cards = () => {
             <div className="w-2/3 p-4">
               <h1 className="text-2xl font-bold text-gray-900">{edu.serviceName}</h1>
               <p className="mt-2 text-sm text-gray-600">
-                You can&#x27;t buy your future, but you can do it. Money is
-                nothing, you&#x27;r everything.
+                {edu.description.slice(0,100)}
               </p>
               <div className="flex mt-2 item-center">
                 <svg
@@ -65,7 +64,7 @@ const Cards = () => {
                 <h1 className="text-xl font-bold text-gray-700">{edu.price}</h1>
                 <Link to={`/details/${edu._id}`}>
                   <button className="px-3 py-2 text-xs font-bold text-white uppercase bg-gray-800 rounded">
-                    Add to Card
+                    View Details
                   </button>
                 </Link>
               </div>

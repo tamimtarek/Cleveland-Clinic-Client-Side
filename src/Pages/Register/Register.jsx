@@ -39,6 +39,7 @@ const Register = () => {
         createUser(email, password)
             .then(() => {
                 updateUserProfile(name, photo)
+                e.target.reset();
                 setUser({...user, photoURL: photo, displayName: name})
                     .then(
                         setReload(true),
@@ -47,15 +48,14 @@ const Register = () => {
                             text: "You clicked the button!",
                             icon: "success"
                           }),
-                        navigate(location?.state || "/"),
-                    )
-
-                e.target.reset();
-
-            })
-            .catch(error => {
-                toast.warning(error.message)
-            })
+                        )
+                        
+                        
+                      })
+                      .catch(error => {
+                        toast.warning(error.message)
+                      })
+                      navigate(location?.state || "/")
 
     }
 

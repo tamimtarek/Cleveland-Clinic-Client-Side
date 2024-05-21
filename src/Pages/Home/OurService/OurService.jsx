@@ -32,7 +32,7 @@ const OurService = ({ service }) => {
             </h2>
             <p className="text-gray-700 leading-tight mb-4">
               <span className="font-bold underline">Service-Description:</span>{" "}
-              {description.slice(1,200)}
+              {description.slice(0,200)}
             </p>
             <div className="flex flex-col mb-auto sm:flex-row justify-between items-center">
               <div className="flex items-center">
