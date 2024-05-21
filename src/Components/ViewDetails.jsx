@@ -64,11 +64,11 @@ const ViewDetails = () => {
       {/* img1 */}
 
       {/* img1 */}
-      <h1 className="text-4xl text-center font-bold underline">
-        Our Service{" "}
-        <span className="font-bold text-green-800 underline-none">Details</span>
+      <h1 className="text-4xl text-center font-bold">
+        {service_name}
+        <span className="font-bold text-green-800 underline-none"> Details</span>
       </h1>
-      <section className="container my-12 mx-auto  antialiased ">
+      <section className="container my-12 mx-auto  ">
         <article className=" flex flex-wrap md:flex-nowrap shadow-lg mx-auto group cursor-pointer transform duration-500 hover:-translate-y-1">
           <img
             className="w-full max-h-[400px] object-cover md:w-2/4"
@@ -153,7 +153,7 @@ const ViewDetails = () => {
               <Link
                 to={`/booknow/${_id}`}
                 // onClick={booked}
-                className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-purple-700 hover:bg-purple-600 font-bold text-white md:text-lg rounded-lg shadow-md"
+                className="mt-3 sm:mt-0 py-2 px-5 btn btn-outline  font-bold  md:text-lg rounded-lg "
               >
                 Book Now
               </Link>
@@ -178,7 +178,7 @@ const ViewDetails = () => {
                 majority have suffered alteration in some form
               </p>
               <div>
-                <Link to="/" className="btn btn-primary mr-5">
+                <Link to="/" className="btn btn-outline mr-5">
                   Back
                 </Link>
               </div>

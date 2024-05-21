@@ -17,7 +17,7 @@ const OurServiceCard = ({ service }) => {
   // console.log(service);
   return (
     <div>
-      <div className=" flex flex-col justify-center items-center">
+      <div className=" flex flex-col justify-center items-center h-full">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-lg h-[600px] w-full min-h-[300px]">
           <img
             src={service_image}
@@ -26,11 +26,11 @@ const OurServiceCard = ({ service }) => {
           />
           <div className="p-6">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
-              <span className="font-bold underline">Service Name: </span>{" "}
+
               {service_name}
             </h2>
             <p className="text-gray-700 leading-tight mb-4">
-              <span className="font-bold underline">Service-Description:</span>{" "}
+              <span className="font-bold">Description:</span>{" "}
               {service_description}
             </p>
             <div className="flex flex-col mb-auto sm:flex-row justify-between items-center">
@@ -46,16 +46,16 @@ const OurServiceCard = ({ service }) => {
                 </span>
               </div>
               <span className="text-gray-600">
-                <span className="font-bold text-black ">Service_Price:</span>{" "}
+                <span className="font-bold text-black ">Price:</span>{" "}
                 {service_price}
               </span>
             </div>
             {/* btn */}
             <Link
               to={`/details/${_id}`}
-              className="relative mt-4 inline-flex items-center px-6 sm:px-12 py-3 overflow-hidden text-lg w-full font-medium text-indigo-600 border-2 border-indigo-600 rounded-full hover:text-white group hover:bg-gray-50"
+              className="relative mt-11 inline-flex items-center px-6 sm:px-12 py-3 overflow-hidden text-lg w-full font-medium text-indigo-600 border-2 border-indigo-600 rounded-lg hover:text-white group hover:bg-gray-50"
             >
-              <span className="absolute left-0 block  w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+              <span className="absolute left-0 block  w-full h-0  bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
               <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                 <svg
                   className="w-5 h-5"

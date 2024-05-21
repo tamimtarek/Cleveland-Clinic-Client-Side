@@ -1,40 +1,31 @@
-import logo from "../assets/2.png";
-
+import img from "../assets/2.png";
 const Footer = () => {
   return (
-    <footer className="bg-white shadow-sm mt-5">
-      <hr />
-      <div className="container px-4 sm:px-6 py-4 mx-auto">
-        <div className="flex flex-col sm:flex-row items-center text-center">
-          <div className="flex gap-2 items-center">
-            <img className="w-auto h-16 sm:h-32" src={logo} alt="" />
-            <div className="bg-white dark:bg-gray-800 flex justify-center items-center p-5">
-              <div className="border border-gray-200 p-2 rounded-md shadow-lg shadow-orange-300">
-                <div className="flex items-end gap-1">
-                  <span className="text-4xl sm:text-6xl font-semibold dark:text-white">
-                    D
-                  </span>
-                  {/* SVGs and other elements remain the same */}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap justify-center mt-6 -mx-4">
-            {/* Links remain the same */}
-          </div>
+    <footer className="footer p-10 bg-base-200">
+      <aside>
+        <img className="w-[156px]" src={img} alt="logo" />
+        <p>
+          Hospital Services Ltd.
+          <br />
+          Providing Best Health Advice since 1992
+        </p>
+      </aside>
+      <nav>
+        <h6 className="footer-title">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              className="fill-current"
+            >
+              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+            </svg>
+          </a>
         </div>
-
-        <hr className="my-6 border-gray-200 md:my-10" />
-
-        <div className="flex flex-col items-center sm:flex-row sm:justify-between">
-          <p className="text-sm text-gray-500">
-            © Copyright 2021. All Rights Reserved.
-          </p>
-
-          <div className="flex -mx-2">{/* Social icons remain the same */}</div>
-        </div>
-      </div>
+      </nav>
     </footer>
   );
 };
